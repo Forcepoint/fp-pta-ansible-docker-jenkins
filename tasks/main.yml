@@ -113,7 +113,7 @@
   copy:
     src: "{{ item.path }}"
     dest: "{{ docker_jenkins_root_data_dir }}/jenkins_docker/certs/"
-    remote_src: {{ item.remote_src }}
+    remote_src: "{{ item.remote_src }}"
     mode: 0744
     owner: service
     group: service
