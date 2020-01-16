@@ -1,0 +1,12 @@
+---
+# defaults file for docker-jenkins
+
+docker_jenkins_version_jenkins: "lts"   # LTS, https://hub.docker.com/r/jenkins/jenkins/tags/ https://jenkins.io/download/
+docker_jenkins_version_nginx: 1.12.1      # 2017-07-11, Stable, http://nginx.org/en/download.html
+docker_jenkins_timezone: America/Denver
+docker_jenkins_root_data_dir: /home/{{ ansible_user_id }}/jenkins_docker_data
+docker_jenkins_update_center: https://updates.jenkins.io
+docker_jenkins_footer_url: https://www.COMPANY.com
+docker_jenkins_plugins: "{{ role_path }}/files/plugins.txt"
+docker_jenkins_casc_path: "{{ role_path }}/templates/jenkins.yaml"
+docker_jenkins_java_keystore: "$JAVA_HOME/lib/security/cacerts"   # This is the Java 11 path. The Java 8 path is in the jre folder.

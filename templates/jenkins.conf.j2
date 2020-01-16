@@ -1,0 +1,34 @@
+ssl_certificate      /etc/ssl/jenkins/{{ docker_jenkins_dns }}.pem;
+ssl_certificate_key  /etc/ssl/jenkins/{{ docker_jenkins_dns }}.key;
+ssl_session_cache shared:SSL:1m;
+ssl_prefer_server_ciphers   on;
+
+server {
+    listen         80;
+    server_name    {{ docker_jenkins_dns }};
+    return         301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name {{ docker_jenkins_dns }};
+
+    location / {
+      proxy_set_header        Host $host:$server_port;
+      proxy_set_header        X-Real-IP $remote_addr;
+      proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header        X-Forwarded-Proto $scheme;
+
+      # Fix the "It appears that your reverse proxy set up is broken" error.
+      proxy_pass          http://jenkins:8080;
+      proxy_read_timeout  90;
+
+      proxy_redirect      http://jenkins:8080 https://{{ docker_jenkins_dns }};
+
+      # Required for new HTTP-based CLI
+      proxy_http_version 1.1;
+      proxy_request_buffering off;
+      # workaround for https://issues.jenkins-ci.org/browse/JENKINS-45651
+      add_header 'X-SSH-Endpoint' '{{ docker_jenkins_dns }}:50022' always;
+    }
+}

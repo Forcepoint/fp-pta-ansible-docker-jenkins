@@ -1,0 +1,10 @@
+---
+# handlers file for docker-jenkins
+
+- name: restart nginx
+  become: yes
+  command: docker restart nginx
+
+- name: restart jenkins
+  become: yes
+  command: docker restart jenkins

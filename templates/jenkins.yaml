@@ -1,0 +1,13 @@
+# See https://github.com/jenkinsci/configuration-as-code-plugin/tree/master/demos
+
+# For whatever reason, upon first run, setting the plugins URL via CASC causes issues.
+#plugins:
+#  sites:
+#  - id: "default"
+#    url: "{{ docker_jenkins_update_center }}"
+
+jenkins:
+  # It is best practice to disable the executors on the master, and use a node instead to run jobs.
+  mode: EXCLUSIVE
+  numExecutors: 0
+  slaveAgentPort: {{ docker_jenkins_slave_port }}
