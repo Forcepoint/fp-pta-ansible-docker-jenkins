@@ -125,6 +125,7 @@
   docker_image:
     build:
       path: "{{ docker_jenkins_root_data_dir }}/jenkins_docker"
+      pull: yes
     name: jenkins/jenkins-custom
     tag: "{{ docker_jenkins_version_jenkins }}"
     source: build
