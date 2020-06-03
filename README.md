@@ -144,7 +144,7 @@ Ensure they're vaulted before committing them to source code control.
   * If you use Active Directory authentication for your security mechanism, you'll run into
     this issue with Java versions beyond 8 if you do not add your AD cert to the keystore.
     In all honesty, I would avoid the Active Directory security realm if you use MS AD.
-    Use LDAP instead against MS AD. We found it to be must faster and more reliable.
+    Use LDAP instead against MS AD. We found it to be much faster and more reliable.
     https://issues.jenkins-ci.org/browse/JENKINS-52374
 
 ## Dependencies
