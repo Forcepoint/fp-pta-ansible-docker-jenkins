@@ -2,6 +2,8 @@
 
 Setup the host to configure and start Jenkins and associated docker containers. HTTPS is enabled by default.
 
+For information about PTA and how to use it with this Ansible role please visit https://github.com/Forcepoint/fp-pta-overview/blob/master/README.md
+
 This role is designed to manage the Jenkins overall version and all plugin versions, plus whatever other application
 settings you wish. This is done by building our own docker container and installing the desired
 plugins into it at build time. The base Jenkins image provides an easy means to do this. The configuration
