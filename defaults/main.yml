@@ -1,7 +1,7 @@
 ---
 # defaults file for docker-jenkins
 
-docker_jenkins_version_jenkins: "lts"   # LTS, https://hub.docker.com/r/jenkins/jenkins/tags/ https://jenkins.io/download/
+docker_jenkins_version_jenkins: "lts-jdk11"   # LTS, https://hub.docker.com/r/jenkins/jenkins/tags/ https://jenkins.io/download/
 docker_jenkins_version_nginx: 1.12.1      # 2017-07-11, Stable, http://nginx.org/en/download.html
 docker_jenkins_timezone: America/Denver
 docker_jenkins_root_data_dir: /home/{{ ansible_user_id }}/jenkins_docker_data
