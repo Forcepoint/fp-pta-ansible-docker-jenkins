@@ -132,6 +132,7 @@ Ensure they're vaulted before committing them to source code control.
     to see if the file changed. This isn't true for files with special meta-data, but for update-center.json,
     it is true. The best/simplest method I've found for triggering a new file is to delete the file from
     the cache repository. Then next attempt to obtain the file will cause Artifactory to get a current copy.
+    I simply create a Jenkins job that runs nightly which does this delete.
 * docker_jenkins_footer_url: The company URL to display at the bottom of the page.
 * docker_jenkins_plugins: The path to a text file describing what plugins to install and their versions.
 * docker_jenkins_casc_path: The path to the Configuration as Code yaml file to use.
