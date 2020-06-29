@@ -16,7 +16,7 @@ RUN cp /home/certs/*.crt /usr/local/share/ca-certificates/
 RUN update-ca-certificates
 
 # Install plugins.
-ENV JENKINS_UC=https://slcartifactory.us.fdo/artifactory/jenkins-updates/stable
+ENV JENKINS_UC={{ docker_jenkins_update_center }}
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 
