@@ -191,8 +191,3 @@
            - "{{ docker_jenkins_root_data_dir }}/nginx/ssl:/etc/ssl"
           restart: always
   register: docker_compose_output
-
-- assert:
-    that:
-      - "docker_compose_output.ansible_facts.jenkins.jenkins.state.running"
-      - "docker_compose_output.ansible_facts.nginx.nginx.state.running"
