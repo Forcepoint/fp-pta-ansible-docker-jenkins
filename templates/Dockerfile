@@ -23,3 +23,8 @@ RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 # Drop back to the regular jenkins user - good practice.
 # https://github.com/jenkinsci/docker/blob/master/README.md#installing-more-tools
 USER jenkins
+
+{% if docker_jenkins_custom_plugins is defined %}
+# Copy in custom plugins. https://github.com/jenkinsci/docker/#preinstalling-plugins
+COPY plugins/* /usr/share/jenkins/ref/plugins/
+{% endif %}
