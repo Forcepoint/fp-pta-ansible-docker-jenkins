@@ -23,6 +23,9 @@ server {
       proxy_pass          http://jenkins:8080;
       proxy_read_timeout  90;
 
+      # Allow uploading of large Jenkins plugins.
+      client_max_body_size 8M;
+
       proxy_redirect      http://jenkins:8080 https://{{ docker_jenkins_dns }};
 
       # Required for new HTTP-based CLI

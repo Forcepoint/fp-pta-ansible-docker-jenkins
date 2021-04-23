@@ -149,6 +149,7 @@ Ensure they're vaulted before committing them to source code control.
     In all honesty, I would avoid the Active Directory security realm if you use MS AD.
     Use LDAP instead against MS AD. We found it to be much faster and more reliable.
     https://issues.jenkins-ci.org/browse/JENKINS-52374
+* docker_jenkins_custom_plugins: A list of paths to hpi files to install in this jenkins instance.
 
 ## Dependencies
 
@@ -167,6 +168,8 @@ None
           # The AD certificate. It's not included in the Java truststore by default.
           # May make more sense to get it from the playbook than to bake it into the base image. Use remote_src no.
           - { path: 'files/ms_ad.pem', remote_src: no }
+        docker_jenkins_custom_plugins:
+          - files/custom.hpi
       roles:
          - role: docker-jenkins
 

@@ -26,6 +26,7 @@
     group: service
   with_items:
     - jenkins_docker/certs
+    - jenkins_docker/plugins
     - jenkins_home
     - jenkins_home/casc_configs
   notify: "restart nginx"
@@ -107,6 +108,17 @@
     owner: service
     group: service
   register: copy_plugins
+
+- name: copy custom plugins
+  become: yes
+  copy:
+    src: "{{ item }}"
+    dest: "{{ docker_jenkins_root_data_dir }}/jenkins_docker/plugins/"
+    mode: 0744
+    owner: service
+    group: service
+  loop: "{{ docker_jenkins_custom_plugins }}"
+  when: docker_jenkins_custom_plugins is defined
 
 - name: copy custom certificates to trust
   become: yes
