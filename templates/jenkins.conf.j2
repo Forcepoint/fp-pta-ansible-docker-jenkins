@@ -2,6 +2,7 @@ ssl_certificate      /etc/ssl/jenkins/{{ docker_jenkins_dns }}.pem;
 ssl_certificate_key  /etc/ssl/jenkins/{{ docker_jenkins_dns }}.key;
 ssl_session_cache shared:SSL:1m;
 ssl_prefer_server_ciphers   on;
+server_names_hash_bucket_size  128;
 
 server {
     listen         80;
